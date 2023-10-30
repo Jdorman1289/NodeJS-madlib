@@ -35,16 +35,14 @@
             <article class="col-4">
                 <div class="card text-center" style="background-color: rgb(204 124 91)">
                     <div class="card-header" style="background-color: rgb(195 179 145)">
-                        <p><span th:text="${story.adj}"></span> | <span th:text="${story.adv}"></span> | <span
-                                th:text="${story.noun}"></span> | <span th:text="${story.verb}"></span></p>
+                        <p> | | |</p>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Story</h3>
-                        <p class="card-text" value="<% locals.stories %>"></p>
+                        <p class="card-text"><%= locals.story %></p>
                     </div>
                     <div class="card-footer text-body-secondary" style="background-color: rgb(195 179 145)">
-                        <p><span th:text="${story.adj}"></span> | <span th:text="${story.adv}"></span> | <span
-                                th:text="${story.noun}"></span> | <span th:text="${story.verb}"></span></p>
+                        <p> | | |</p>
                     </div>
                 </div>
             </article>

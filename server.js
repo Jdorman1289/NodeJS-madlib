@@ -3,6 +3,7 @@ const storiesRouter = require("./routes/stories");
 const Madlib = require("./models/Madlib");
 const databaseConnection = require("./config");
 const mongoose = require("mongoose");
+const fs = require("fs");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -24,14 +25,16 @@ app.post("/play", async (req, res) => {
   madlib.setStory();
   madlib.setSavedStories(madlib.getStory());
 
-  const libSchema = new mongoose.Schema({
-    story: String,
-  });
+  //   const libSchema = new mongoose.Schema({
+  //     story: String,
+  //   });
 
-  const Lib = mongoose.model("lib", libSchema);
+  //   const Lib = mongoose.model("lib", libSchema);
 
-  const newLib = new Lib({ story: `${madlib.getStory}` });
-  await newLib.save();
+  //   const newLib = new Lib({ story: `${madlib.getStory}` });
+  //   await newLib.save();
+
+  fs.writeFileSync("tempStoryStorage.txt", madlib.getStory());
 
   res.redirect("/stories");
 });
