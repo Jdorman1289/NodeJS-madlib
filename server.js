@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 let madlib = new Madlib();
 
 app.get("/", (req, res) => {
-  // res.render("index", {textData: "eventually from the database"});
   res.render("index");
 });
 
