@@ -11,12 +11,13 @@ With their ${this._adj} determination and ${this._adv} quick thinking, they emba
 Finally, after a ${this._adj} battle, the brave ${this._noun} emerged victorious, saving the kingdom and becoming a ${this._adj} legend in the process.`;
   }
 
-  _savedStories = [];
+  _savedStories = {};
   getSavedStories() {
     return this._savedStories;
   }
   setSavedStories(value) {
-    this._savedStories.push(value);
+    let newNameKey = `Story${Object.keys(this._savedStories).length + 1}`;
+    this._savedStories[newNameKey] = value;
   }
 
   _adj = "";
@@ -49,10 +50,6 @@ Finally, after a ${this._adj} battle, the brave ${this._noun} emerged victorious
   }
   setVerb(value) {
     this._verb = value;
-  }
-
-  constructor() {
-    console.log("you init the class! lucky you");
   }
 }
 

@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Story</h3>
-                        <p class="card-text" th:text="${story.story}"></p>
+                        <p class="card-text" value="<% locals.stories %>"></p>
                     </div>
                     <div class="card-footer text-body-secondary" style="background-color: rgb(195 179 145)">
                         <p><span th:text="${story.adj}"></span> | <span th:text="${story.adv}"></span> | <span
