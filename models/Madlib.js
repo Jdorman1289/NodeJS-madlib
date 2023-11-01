@@ -1,9 +1,9 @@
 class Madlib {
   _story = "";
-  getStory() {
+  get getStory() {
     return this._story;
   }
-  setStory(value) {
+  setStory() {
     this._story = `Once upon a time, in a ${this._adj} kingdom, there lived a brave ${this._noun} who was known for their ${this._adv} skills. 
 They were admired by all for their ${this._adj} heart and ${this._noun} spirit. One day, a second ${this._noun} appeared in the kingdom, 
 causing chaos and ${this._adv}, spreading fear among the people. Our brave ${this._noun} knew they had to take action and ${this._verb} the ${this._noun} to restore peace and harmony.
@@ -12,43 +12,43 @@ Finally, after a ${this._adj} battle, the brave ${this._noun} emerged victorious
   }
 
   _savedStories = {};
-  getSavedStories() {
+  get getSavedStories() {
     return this._savedStories;
   }
-  setSavedStories(value) {
+  set setSavedStories(value) {
     let newNameKey = `Story${Object.keys(this._savedStories).length + 1}`;
     this._savedStories[newNameKey] = value;
   }
 
   _adj = "";
-  getAdj() {
+  get getAdj() {
     return this._adj;
   }
-  setAdj(value) {
+  set setAdj(value) {
     this._adj = value;
   }
 
   _noun = "";
-  getNoun() {
+  get getNoun() {
     return this._noun;
   }
-  setNoun(value) {
+  set setNoun(value) {
     this._noun = value;
   }
 
   _adv = "";
-  getAdv() {
+  get getAdv() {
     return this._adv;
   }
-  setAdv(value) {
+  set setAdv(value) {
     this._adv = value;
   }
 
   _verb = "";
-  getVerb() {
+  get getVerb() {
     return this._verb;
   }
-  setVerb(value) {
+  set setVerb(value) {
     this._verb = value;
   }
 }
