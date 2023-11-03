@@ -11,10 +11,6 @@
     <!--    custom bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.1/dist/sketchy/bootstrap.min.css">
 
-    <!--    masonry-->
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
-        async></script>
 </head>
 
 <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -31,21 +27,25 @@
 <body style="background-color: rgb(210 160 58)">
     <main class="container">
         <h1 class="text-center">Your Stories</h1>
-        <div class="row" data-masonry='{"percentPosition": true }'>
-            <article class="col-4">
-                <div class="card text-center" style="background-color: rgb(204 124 91)">
+        <div class="row">
+            <% stories.forEach((story)=> { %>
+                <div class="col-4 card text-center" style="background-color: rgb(204 124 91)">
                     <div class="card-header" style="background-color: rgb(195 179 145)">
                         <p> | | |</p>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">Story</h3>
-                        <p class="card-text"><%= locals.story %></p>
+                        <h3 class="card-title">
+                            Story
+                        </h3>
+                        <p class="card-text">
+                            <%= story %>
+                        </p>
                     </div>
                     <div class="card-footer text-body-secondary" style="background-color: rgb(195 179 145)">
                         <p> | | |</p>
                     </div>
                 </div>
-            </article>
+                <% }); %>
         </div>
     </main>
 

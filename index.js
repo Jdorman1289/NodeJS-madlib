@@ -3,10 +3,7 @@ const storiesRouter = require("./routes/stories");
 const Madlib = require("./models/Madlib");
 const fs = require("fs");
 const redis = require("redis");
-const dbClient = redis.createClient({
-  socket_keepalive: true,
-  socket_initialdelay: 10000, // 10 seconds
-});
+let dbClient = redis.createClient();
 
 const app = express();
 app.set("view engine", "ejs");
@@ -20,7 +17,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/play", (req, res) => {
+app.post("/play", async (req, res) => {
   madlib.setAdj = req.body.adj;
   madlib.setAdv = req.body.adv;
   madlib.setVerb = req.body.verb;
@@ -28,27 +25,8 @@ app.post("/play", (req, res) => {
   madlib.setStory();
   madlib.setSavedStories = madlib.getStory;
 
-  dbClient.on("error", (err) => {
-    console.error(err);
-  });
-
-  dbClient.on("connect", () => {
-    console.log("Connected to Redis");
-  });
-
-  dbClient.set(
-    `Story${Object.keys(madlib.getSavedStories).length + 1}`,
-    madlib.getStory,
-    (err, reply) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(reply);
-      }
-    }
-  );
-
-  // fs.writeFileSync("tempStoryStorage.txt", madlib.getStory);
+  await dbClient.connect();
+  await dbClient.set(`Story`, madlib.getStory);
 
   res.redirect("/stories");
 });
