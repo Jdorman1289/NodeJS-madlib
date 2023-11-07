@@ -26,7 +26,10 @@ app.post("/play", async (req, res) => {
   madlib.setSavedStories = madlib.getStory;
 
   await dbClient.connect();
-  await dbClient.set(`Story`, madlib.getStory);
+
+  const storyNumber = await dbClient.incr("storyCount");
+
+  await dbClient.set(`Story${storyNumber}`, madlib.getStory);
 
   res.redirect("/stories");
 });
